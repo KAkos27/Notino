@@ -12,7 +12,7 @@ import javax.swing.JLabel;
  */
 public class Notino extends javax.swing.JFrame {
 
-    int parfumAlapAr, reszOsszeg, vegOsszeg = 0;
+    int parfumAlapAr, reszOsszeg, vegOsszeg, csomOsszeg = 0;
     int darabSzorzo = 1;
     double mlSzorzo= 1;
     double kuponSzorzo = 1;
@@ -37,6 +37,7 @@ public class Notino extends javax.swing.JFrame {
         plCsom = new javax.swing.JPanel();
         rbAjandek = new javax.swing.JRadioButton();
         rbKornyezet = new javax.swing.JRadioButton();
+        rbAlap = new javax.swing.JRadioButton();
         plTermek = new javax.swing.JPanel();
         lbReszOsszeg = new javax.swing.JLabel();
         srDb = new javax.swing.JSpinner();
@@ -66,9 +67,28 @@ public class Notino extends javax.swing.JFrame {
 
         bgCsomagolas.add(rbAjandek);
         rbAjandek.setText("Csomagolás ajándékként (+1330Ft)");
+        rbAjandek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbAjandekActionPerformed(evt);
+            }
+        });
 
         bgCsomagolas.add(rbKornyezet);
         rbKornyezet.setText("Környezetbarát csomagolás (+220Ft)");
+        rbKornyezet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbKornyezetActionPerformed(evt);
+            }
+        });
+
+        bgCsomagolas.add(rbAlap);
+        rbAlap.setSelected(true);
+        rbAlap.setText("Alap csomagolás");
+        rbAlap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbAlapActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout plCsomLayout = new javax.swing.GroupLayout(plCsom);
         plCsom.setLayout(plCsomLayout);
@@ -78,7 +98,8 @@ public class Notino extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(plCsomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(rbKornyezet)
-                    .addComponent(rbAjandek)))
+                    .addComponent(rbAjandek)
+                    .addComponent(rbAlap, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         plCsomLayout.setVerticalGroup(
             plCsomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,7 +108,9 @@ public class Notino extends javax.swing.JFrame {
                 .addComponent(rbAjandek)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rbKornyezet)
-                .addGap(33, 33, 33))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rbAlap)
+                .addGap(9, 9, 9))
         );
 
         plTermek.setBorder(javax.swing.BorderFactory.createTitledBorder("Termék:"));
@@ -172,7 +195,7 @@ public class Notino extends javax.swing.JFrame {
                     .addComponent(rb30)
                     .addComponent(rb50)
                     .addComponent(rb100))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         plAjandek.setBorder(javax.swing.BorderFactory.createTitledBorder("Ajándék(30.000 Ft felett)"));
@@ -306,8 +329,8 @@ public class Notino extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(plTermek, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(plCsom, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(plCsom, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(plAjandek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -337,7 +360,7 @@ public class Notino extends javax.swing.JFrame {
         }else if (parfumIndex == 4){
             parfumAlapAr = 35000;
         }
-        
+       
         szamolas();
     }//GEN-LAST:event_cbTermekActionPerformed
 
@@ -377,12 +400,34 @@ public class Notino extends javax.swing.JFrame {
         
         szamolas();
     }//GEN-LAST:event_btKuponActionPerformed
+
+    private void rbAlapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAlapActionPerformed
+        csomOsszeg = 0;
+        szamolas();
+    }//GEN-LAST:event_rbAlapActionPerformed
+
+    private void rbKornyezetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbKornyezetActionPerformed
+        csomOsszeg = 220;
+        szamolas();
+    }//GEN-LAST:event_rbKornyezetActionPerformed
+
+    private void rbAjandekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAjandekActionPerformed
+        csomOsszeg = 1330;
+        szamolas();
+    }//GEN-LAST:event_rbAjandekActionPerformed
     
     private void szamolas() {
        reszOsszeg = (int) ((parfumAlapAr) * darabSzorzo * mlSzorzo);
        lbReszOsszeg.setText( reszOsszeg + "");
-       vegOsszeg = (int) (reszOsszeg * kuponSzorzo);
+       if (reszOsszeg >= 30000){
+           cbAjandek.setEnabled(true);
+       }else{
+           cbAjandek.setSelectedIndex(0);
+           cbAjandek.setEnabled(false);
+       }
+       vegOsszeg = (int) ((reszOsszeg + csomOsszeg) * kuponSzorzo);
        lbVegosszeg.setText(vegOsszeg + "");
+       
     }
 
     /**
@@ -443,6 +488,7 @@ public class Notino extends javax.swing.JFrame {
     private javax.swing.JRadioButton rb30;
     private javax.swing.JRadioButton rb50;
     private javax.swing.JRadioButton rbAjandek;
+    private javax.swing.JRadioButton rbAlap;
     private javax.swing.JRadioButton rbKornyezet;
     private javax.swing.JSpinner srDb;
     private javax.swing.JTextField tfKupon;
