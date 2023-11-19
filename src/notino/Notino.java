@@ -12,6 +12,9 @@ import javax.swing.JLabel;
  */
 public class Notino extends javax.swing.JFrame {
 
+    int parfumAlapAr, reszOsszeg = 0;
+    int darabSzorzo = 1;
+    double mlSzorzo = 1;
     /**
      * Creates new form Notino
      */
@@ -28,150 +31,249 @@ public class Notino extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel3 = new javax.swing.JPanel();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jPanel2 = new javax.swing.JPanel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jPanel5 = new javax.swing.JPanel();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        bgMl = new javax.swing.ButtonGroup();
+        bgCsomagolas = new javax.swing.ButtonGroup();
+        plCsom = new javax.swing.JPanel();
+        rbAjandek = new javax.swing.JRadioButton();
+        rbKornyezet = new javax.swing.JRadioButton();
+        plTermek = new javax.swing.JPanel();
+        lbReszOsszeg = new javax.swing.JLabel();
+        srDb = new javax.swing.JSpinner();
+        cbTermek = new javax.swing.JComboBox<>();
+        lbForint1 = new javax.swing.JLabel();
+        rb30 = new javax.swing.JRadioButton();
+        rb50 = new javax.swing.JRadioButton();
+        rb100 = new javax.swing.JRadioButton();
+        plAjandek = new javax.swing.JPanel();
+        cbAjandek = new javax.swing.JComboBox<>();
+        plKupon = new javax.swing.JPanel();
+        tfKupon = new javax.swing.JTextField();
+        lbKupon = new javax.swing.JLabel();
+        btKupon = new javax.swing.JButton();
+        lbKep = new javax.swing.JLabel();
+        plVegso = new javax.swing.JPanel();
+        btVasarlas = new javax.swing.JButton();
+        lbForint2 = new javax.swing.JLabel();
+        lbVegosszeg = new javax.swing.JLabel();
+        btMegse = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Notino.hu");
+        setBackground(new java.awt.Color(51, 204, 255));
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Csomagolás"));
+        plCsom.setBorder(javax.swing.BorderFactory.createTitledBorder("Csomagolás"));
 
-        jRadioButton2.setText("jRadioButton2");
+        bgCsomagolas.add(rbAjandek);
+        rbAjandek.setText("Csomagolás ajándékként (+1330Ft)");
 
-        jRadioButton3.setText("jRadioButton3");
+        bgCsomagolas.add(rbKornyezet);
+        rbKornyezet.setText("Környezetbarát csomagolás (+220Ft)");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout plCsomLayout = new javax.swing.GroupLayout(plCsom);
+        plCsom.setLayout(plCsomLayout);
+        plCsomLayout.setHorizontalGroup(
+            plCsomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(plCsomLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addGroup(plCsomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rbKornyezet)
+                    .addComponent(rbAjandek)))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        plCsomLayout.setVerticalGroup(
+            plCsomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(plCsomLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jRadioButton2)
+                .addComponent(rbAjandek)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton3)
+                .addComponent(rbKornyezet)
                 .addGap(33, 33, 33))
         );
 
-        jButton1.setText("jButton1");
+        plTermek.setBorder(javax.swing.BorderFactory.createTitledBorder("Termék:"));
 
-        jButton3.setText("jButton3");
+        lbReszOsszeg.setText("0");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Termék:"));
+        srDb.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
+        srDb.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                srDbStateChanged(evt);
+            }
+        });
 
-        jLabel1.setText("jLabel1");
+        cbTermek.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Válassz!", "Dior Sauvage", "Bleu de Chanel", "Calvin Klein Eternity", "Tom Ford Noir" }));
+        cbTermek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbTermekActionPerformed(evt);
+            }
+        });
 
-        jLabel2.setText("jLabel2");
+        lbForint1.setText("Ft");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        bgMl.add(rb30);
+        rb30.setText("30ml");
+        rb30.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                rb30ItemStateChanged(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        bgMl.add(rb50);
+        rb50.setSelected(true);
+        rb50.setText("50ml");
+        rb50.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                rb50ItemStateChanged(evt);
+            }
+        });
+
+        bgMl.add(rb100);
+        rb100.setText("100ml");
+        rb100.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                rb100ItemStateChanged(evt);
+            }
+        });
+
+        javax.swing.GroupLayout plTermekLayout = new javax.swing.GroupLayout(plTermek);
+        plTermek.setLayout(plTermekLayout);
+        plTermekLayout.setHorizontalGroup(
+            plTermekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(plTermekLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(jLabel2)
-                .addGap(25, 25, 25))
+                .addGroup(plTermekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(plTermekLayout.createSequentialGroup()
+                        .addComponent(cbTermek, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbReszOsszeg)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbForint1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(srDb, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(plTermekLayout.createSequentialGroup()
+                        .addComponent(rb30)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rb50)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rb100, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        plTermekLayout.setVerticalGroup(
+            plTermekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(plTermekLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                .addGroup(plTermekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbTermek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbReszOsszeg)
+                    .addComponent(lbForint1)
+                    .addComponent(srDb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(plTermekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rb30)
+                    .addComponent(rb50)
+                    .addComponent(rb100))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Ajándék(30.000 Ft felett)"));
+        plAjandek.setBorder(javax.swing.BorderFactory.createTitledBorder("Ajándék(30.000 Ft felett)"));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbAjandek.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Válassz!", "Nivea arckrém 30ml", "Ysl Y 1ml teszter", "Bioderma arctisztító 30ml", "Cerave arckrém 30ml" }));
+        cbAjandek.setEnabled(false);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout plAjandekLayout = new javax.swing.GroupLayout(plAjandek);
+        plAjandek.setLayout(plAjandekLayout);
+        plAjandekLayout.setHorizontalGroup(
+            plAjandekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(plAjandekLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(cbAjandek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(47, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        plAjandekLayout.setVerticalGroup(
+            plAjandekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(plAjandekLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbAjandek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+
+        plKupon.setBorder(javax.swing.BorderFactory.createTitledBorder("Kuponkód beválltás"));
+
+        lbKupon.setText("KUPON123 (- 20%)");
+
+        btKupon.setBackground(new java.awt.Color(0, 204, 255));
+        btKupon.setText("Ok!");
+
+        javax.swing.GroupLayout plKuponLayout = new javax.swing.GroupLayout(plKupon);
+        plKupon.setLayout(plKuponLayout);
+        plKuponLayout.setHorizontalGroup(
+            plKuponLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(plKuponLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(plKuponLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(plKuponLayout.createSequentialGroup()
+                        .addComponent(tfKupon)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btKupon, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(plKuponLayout.createSequentialGroup()
+                        .addComponent(lbKupon)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Kuponkód beválltás"));
-
-        jToggleButton2.setText("jToggleButton2");
-
-        jTextField1.setText("jTextField1");
-
-        jLabel3.setText("KUPON123 (- 20%)");
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addComponent(jLabel3)
+        plKuponLayout.setVerticalGroup(
+            plKuponLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, plKuponLayout.createSequentialGroup()
+                .addComponent(lbKupon)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButton2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(plKuponLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfKupon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btKupon))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        jLabel4.setText("jLabel4");
+        lbKep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kepek/Kolni.png"))); // NOI18N
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\KosztolányiÁkos(SZOF\\Documents\\NetBeansProjects\\NotinoKozmetika\\src\\kepek\\Kolni.png")); // NOI18N
+        plVegso.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        btVasarlas.setBackground(new java.awt.Color(0, 204, 255));
+        btVasarlas.setText("Vásárlás");
+
+        lbForint2.setText("Ft");
+
+        lbVegosszeg.setText("15000");
+
+        btMegse.setBackground(new java.awt.Color(0, 204, 255));
+        btMegse.setText("Mégse");
+
+        javax.swing.GroupLayout plVegsoLayout = new javax.swing.GroupLayout(plVegso);
+        plVegso.setLayout(plVegsoLayout);
+        plVegsoLayout.setHorizontalGroup(
+            plVegsoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, plVegsoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btMegse)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(plVegsoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(plVegsoLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(lbVegosszeg)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbForint2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btVasarlas))
+                .addContainerGap())
+        );
+        plVegsoLayout.setVerticalGroup(
+            plVegsoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(plVegsoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(plVegsoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbVegosszeg)
+                    .addComponent(lbForint2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(plVegsoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btMegse)
+                    .addComponent(btVasarlas))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -180,54 +282,87 @@ public class Notino extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel6))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(plTermek, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(plKupon, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lbKep, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGap(9, 9, 9))))))
+                        .addComponent(plVegso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(plCsom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(plAjandek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(plTermek, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(plCsom, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(plAjandek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(plVegso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(plKupon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3)
-                            .addComponent(jButton1))
-                        .addGap(8, 8, 8)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(lbKep)))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cbTermekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTermekActionPerformed
+        int parfumIndex = cbTermek.getSelectedIndex();
+        
+        if (parfumIndex == 0){
+            parfumAlapAr = 0;
+        }else if (parfumIndex == 1){
+            parfumAlapAr = 25000;
+        }else if (parfumIndex == 2){
+            parfumAlapAr = 27000;
+        }else if (parfumIndex == 3){
+            parfumAlapAr = 22000;
+        }else if (parfumIndex == 4){
+            parfumAlapAr = 35000;
+        }
+        
+        reszOsszeg = (int) ((parfumAlapAr) * darabSzorzo * mlSzorzo);
+        lbReszOsszeg.setText( reszOsszeg + "");
+    }//GEN-LAST:event_cbTermekActionPerformed
+
+    private void srDbStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_srDbStateChanged
+        darabSzorzo = (int) srDb.getValue();
+        
+        reszOsszeg = (int) ((parfumAlapAr) * darabSzorzo * mlSzorzo);
+        lbReszOsszeg.setText( reszOsszeg + "");
+    }//GEN-LAST:event_srDbStateChanged
+
+    private void rb30ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rb30ItemStateChanged
+        mlSzorzo = 0.75;
+        
+        reszOsszeg = (int) ((parfumAlapAr) * darabSzorzo * mlSzorzo);
+        lbReszOsszeg.setText( reszOsszeg + "");        
+    }//GEN-LAST:event_rb30ItemStateChanged
+
+    private void rb50ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rb50ItemStateChanged
+        mlSzorzo = 1;
+        
+        reszOsszeg = (int) ((parfumAlapAr) * darabSzorzo * mlSzorzo);
+        lbReszOsszeg.setText( reszOsszeg + "");
+    }//GEN-LAST:event_rb50ItemStateChanged
+
+    private void rb100ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rb100ItemStateChanged
+        mlSzorzo = 1.25;
+        
+        reszOsszeg = (int) ((parfumAlapAr) * darabSzorzo * mlSzorzo);
+        lbReszOsszeg.setText( reszOsszeg + "");
+    }//GEN-LAST:event_rb100ItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -265,23 +400,30 @@ public class Notino extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.ButtonGroup bgCsomagolas;
+    private javax.swing.ButtonGroup bgMl;
+    private javax.swing.JButton btKupon;
+    private javax.swing.JButton btMegse;
+    private javax.swing.JButton btVasarlas;
+    private javax.swing.JComboBox<String> cbAjandek;
+    private javax.swing.JComboBox<String> cbTermek;
+    private javax.swing.JLabel lbForint1;
+    private javax.swing.JLabel lbForint2;
+    private javax.swing.JLabel lbKep;
+    private javax.swing.JLabel lbKupon;
+    private javax.swing.JLabel lbReszOsszeg;
+    private javax.swing.JLabel lbVegosszeg;
+    private javax.swing.JPanel plAjandek;
+    private javax.swing.JPanel plCsom;
+    private javax.swing.JPanel plKupon;
+    private javax.swing.JPanel plTermek;
+    private javax.swing.JPanel plVegso;
+    private javax.swing.JRadioButton rb100;
+    private javax.swing.JRadioButton rb30;
+    private javax.swing.JRadioButton rb50;
+    private javax.swing.JRadioButton rbAjandek;
+    private javax.swing.JRadioButton rbKornyezet;
+    private javax.swing.JSpinner srDb;
+    private javax.swing.JTextField tfKupon;
     // End of variables declaration//GEN-END:variables
 }
