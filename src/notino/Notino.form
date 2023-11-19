@@ -13,10 +13,13 @@
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="ff" green="cc" red="33" type="rgb"/>
     </Property>
+    <Property name="type" type="java.awt.Window$Type" editor="org.netbeans.modules.form.editors.EnumEditor">
+      <Value id="UTILITY"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -42,7 +45,7 @@
                   </Group>
                   <Component id="lbKep" alignment="0" min="-2" pref="281" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="plVegso" max="32767" attributes="0"/>
@@ -50,7 +53,7 @@
                   </Group>
                   <Component id="plAjandek" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -62,7 +65,7 @@
                   <Component id="plTermek" max="32767" attributes="0"/>
                   <Component id="plCsom" pref="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="plAjandek" min="-2" max="-2" attributes="0"/>
@@ -75,7 +78,7 @@
                       <Component id="lbKep" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="14" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -124,6 +127,10 @@
               <ComponentRef name="bgCsomagolas"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Csomagol&#xe1;s aj&#xe1;nd&#xe9;kk&#xe9;nt (+1330Ft)"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbAjandekActionPerformed"/>
@@ -135,6 +142,10 @@
               <ComponentRef name="bgCsomagolas"/>
             </Property>
             <Property name="text" type="java.lang.String" value="K&#xf6;rnyezetbar&#xe1;t csomagol&#xe1;s (+220Ft)"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbKornyezetActionPerformed"/>
@@ -147,6 +158,10 @@
             </Property>
             <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="Alap csomagol&#xe1;s"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbAlapActionPerformed"/>
@@ -222,6 +237,9 @@
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="1" maximum="10" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="srDbStateChanged"/>
@@ -237,6 +255,9 @@
                 <StringItem index="3" value="Calvin Klein Eternity"/>
                 <StringItem index="4" value="Tom Ford Noir"/>
               </StringArray>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
             </Property>
           </Properties>
           <Events>
@@ -257,6 +278,9 @@
               <ComponentRef name="bgMl"/>
             </Property>
             <Property name="text" type="java.lang.String" value="30ml"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="rb30ItemStateChanged"/>
@@ -269,6 +293,9 @@
             </Property>
             <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="50ml"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="rb50ItemStateChanged"/>
@@ -280,6 +307,9 @@
               <ComponentRef name="bgMl"/>
             </Property>
             <Property name="text" type="java.lang.String" value="100ml"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="rb100ItemStateChanged"/>
@@ -327,6 +357,9 @@
                 <StringItem index="3" value="Bioderma arctiszt&#xed;t&#xf3; 30ml"/>
                 <StringItem index="4" value="Cerave arckr&#xe9;m 30ml"/>
               </StringArray>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
             </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
@@ -381,6 +414,11 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JTextField" name="tfKupon">
+          <Properties>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Text Cursor"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbKupon">
           <Properties>
@@ -393,6 +431,9 @@
               <Color blue="ff" green="cc" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Ok!"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btKuponActionPerformed"/>
@@ -421,7 +462,10 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="btMegse" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lbVegosszegFelirat" alignment="1" min="-2" pref="63" max="-2" attributes="0"/>
+                      <Component id="btMegse" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
@@ -443,6 +487,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lbVegosszeg" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lbForint2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbVegosszegFelirat" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -461,7 +506,13 @@
               <Color blue="ff" green="cc" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="V&#xe1;s&#xe1;rl&#xe1;s"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btVasarlasActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbForint2">
           <Properties>
@@ -470,7 +521,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lbVegosszeg">
           <Properties>
-            <Property name="text" type="java.lang.String" value="15000"/>
+            <Property name="text" type="java.lang.String" value="0"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btMegse">
@@ -479,6 +530,17 @@
               <Color blue="ff" green="cc" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="M&#xe9;gse"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btMegseActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbVegosszegFelirat">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="V&#xe9;g&#xf6;sszeg:"/>
           </Properties>
         </Component>
       </SubComponents>
