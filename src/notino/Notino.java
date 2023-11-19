@@ -12,9 +12,10 @@ import javax.swing.JLabel;
  */
 public class Notino extends javax.swing.JFrame {
 
-    int parfumAlapAr, reszOsszeg = 0;
+    int parfumAlapAr, reszOsszeg, vegOsszeg = 0;
     int darabSzorzo = 1;
-    double mlSzorzo = 1;
+    double mlSzorzo= 1;
+    double kuponSzorzo = 1;
     /**
      * Creates new form Notino
      */
@@ -202,6 +203,11 @@ public class Notino extends javax.swing.JFrame {
 
         btKupon.setBackground(new java.awt.Color(0, 204, 255));
         btKupon.setText("Ok!");
+        btKupon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btKuponActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout plKuponLayout = new javax.swing.GroupLayout(plKupon);
         plKupon.setLayout(plKuponLayout);
@@ -332,37 +338,52 @@ public class Notino extends javax.swing.JFrame {
             parfumAlapAr = 35000;
         }
         
-        reszOsszeg = (int) ((parfumAlapAr) * darabSzorzo * mlSzorzo);
-        lbReszOsszeg.setText( reszOsszeg + "");
+        szamolas();
     }//GEN-LAST:event_cbTermekActionPerformed
 
+   
     private void srDbStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_srDbStateChanged
         darabSzorzo = (int) srDb.getValue();
         
-        reszOsszeg = (int) ((parfumAlapAr) * darabSzorzo * mlSzorzo);
-        lbReszOsszeg.setText( reszOsszeg + "");
+        szamolas();
     }//GEN-LAST:event_srDbStateChanged
 
     private void rb30ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rb30ItemStateChanged
         mlSzorzo = 0.75;
         
-        reszOsszeg = (int) ((parfumAlapAr) * darabSzorzo * mlSzorzo);
-        lbReszOsszeg.setText( reszOsszeg + "");        
+        szamolas();        
     }//GEN-LAST:event_rb30ItemStateChanged
 
     private void rb50ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rb50ItemStateChanged
         mlSzorzo = 1;
         
-        reszOsszeg = (int) ((parfumAlapAr) * darabSzorzo * mlSzorzo);
-        lbReszOsszeg.setText( reszOsszeg + "");
+        szamolas();
     }//GEN-LAST:event_rb50ItemStateChanged
 
     private void rb100ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rb100ItemStateChanged
         mlSzorzo = 1.25;
         
-        reszOsszeg = (int) ((parfumAlapAr) * darabSzorzo * mlSzorzo);
-        lbReszOsszeg.setText( reszOsszeg + "");
+        szamolas();
     }//GEN-LAST:event_rb100ItemStateChanged
+
+    private void btKuponActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btKuponActionPerformed
+        String kuponSzoveg = tfKupon.getText();
+        
+        if ("KUPON123".equals(kuponSzoveg)){
+            kuponSzorzo = 0.8;
+        }else{
+            kuponSzorzo = 1;
+        }
+        
+        szamolas();
+    }//GEN-LAST:event_btKuponActionPerformed
+    
+    private void szamolas() {
+       reszOsszeg = (int) ((parfumAlapAr) * darabSzorzo * mlSzorzo);
+       lbReszOsszeg.setText( reszOsszeg + "");
+       vegOsszeg = (int) (reszOsszeg * kuponSzorzo);
+       lbVegosszeg.setText(vegOsszeg + "");
+    }
 
     /**
      * @param args the command line arguments
