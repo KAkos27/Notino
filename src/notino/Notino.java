@@ -474,11 +474,11 @@ public class Notino extends javax.swing.JFrame {
         if ("Válassz!".equals(ajandek)){
             ablakSzoveg = dbSzam+"db "+termek+" "+nagysag;
         }else{
-            ablakSzoveg = dbSzam+"db "+termek+" "+nagysag+"\nAjandék: "+ajandek;
+            ablakSzoveg = dbSzam+"db "+termek+" "+nagysag+"\nAjándék: "+ajandek;
         }
         
-        if (vegOsszeg !=0){
-            JOptionPane.showMessageDialog(rootPane, "Köszönjük a vásárlást\n"+ablakSzoveg, "Megrendelés", JOptionPane.PLAIN_MESSAGE);
+        if (reszOsszeg !=0){
+            JOptionPane.showMessageDialog(rootPane, "Köszönjük a vásárlást!\n"+ablakSzoveg, "Megrendelés", JOptionPane.PLAIN_MESSAGE);
         }else{
             JOptionPane.showMessageDialog(rootPane, "Válassz terméket!", "Hiba!", JOptionPane.ERROR_MESSAGE);
         }
@@ -511,7 +511,7 @@ public class Notino extends javax.swing.JFrame {
        
        vegOsszeg = (int) ((reszOsszeg + csomOsszeg) * kuponSzorzo);
        lbVegosszeg.setText(vegOsszeg + "");
-       
+     
     }
     
 
